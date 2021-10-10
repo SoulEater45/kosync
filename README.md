@@ -16,17 +16,17 @@ The follwing API list is extracted from his [code](https://github.com/myelsukov/
 
 ## Auth User
 
-|               |                   |
-|---------------|-------------------|
-| **URL**       | `/users/auth`     |
-| **METHOD**    | `POST`            |
+|               |               |
+|---------------|---------------|
+| **URL**       | `/users/auth` |
+| **METHOD**    | `GET`         |
 
 ## Sync Progress for Document
 
 |               |                               |
 |---------------|-------------------------------|
 | **URL**       | `/syncs/progress/<document>`  |
-| **METHOD**    | `POST`                        |
+| **METHOD**    | `GET`                         |
 
 ## Sync Progress
 
