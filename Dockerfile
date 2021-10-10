@@ -18,4 +18,5 @@ COPY app.py app.py
 # Forward this port to interact with it
 EXPOSE 5000
 
-CMD [ "flask", "run" ]
+CMD [ "python", "app.py" ]
+#CMD [ "flask", "run" ]

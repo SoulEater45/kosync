@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import time
 import traceback
@@ -24,19 +25,19 @@ def debug_print(msg, debug=False):
         return
     
     if isinstance(msg, str):
-        print(msg)
+        print(msg, file=sys.stdout)
     elif isinstance(msg, dict):
         if "code" in msg:
             if msg["code"] == 201:
                 msg["msg"] = json.dumps(msg["msg"].get_json(), indent=2)
-            print(str(msg["code"]) + ": " + msg["msg"])
+            print(str(msg["code"]) + ": " + msg["msg"], file=sys.stdout)
         else:
-            print(json.dumps(msg, indent=2))
+            print(json.dumps(msg, indent=2), file=sys.stdout)
     elif hasattr(msg, "is_json") and msg.is_json:
-        print(json.dumps(msg.get_json(), indent=2))
+        print(json.dumps(msg.get_json(), indent=2), file=sys.stdout)
     else:
-        print("Dunno about the type " + str(type(msg)) + ", lets try it")
-        print(msg)
+        print("Dunno about the type " + str(type(msg)) + ", lets try it", file=sys.stdout)
+        print(msg, file=sys.stdout)
 
 
 def loadDb():
@@ -83,6 +84,7 @@ def updatePosition(username, document, position):
     doc = dict(position)
     timestamp = int(time.time())
     doc['timestamp'] = timestamp
+    doc.pop("document", "not_found")
     # doc['percentage'] = position.get('percentage')
     # doc['progress'] = position.get('progress')
     # doc['device'] = position.get('device')
